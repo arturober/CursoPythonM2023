@@ -1,0 +1,7 @@
+mesa
+coche
+silla
+casa
+árbol
+rueda
+piscina
