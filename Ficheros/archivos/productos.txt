@@ -1,0 +1,5 @@
+silla;34
+mesa;80
+coche;20000
+ratón;10
+lavadora;300
