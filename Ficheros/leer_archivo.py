@@ -22,8 +22,15 @@ def lee_fichero4():
     with open("Ficheros/archivos/palabras.txt") as f:
         lineas = [linea.strip() for linea in f]
         print(lineas)
+        
+def suma_numeros():
+     with open("Ficheros/archivos/numeros.txt") as f:
+        lineas = [int(linea.strip()) for linea in f]
+        suma = sum(lineas)
+        print(f"Suma: {suma}, Media: {suma/len(lineas)}")
     
 # lee_fichero()
 # lee_fichero2()
 # lee_fichero3()
-lee_fichero4()
+# lee_fichero4()
+suma_numeros()
