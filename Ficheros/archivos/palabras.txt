@@ -1,7 +1,12 @@
-mesa
-coche
-silla
 casa
+coche
 árbol
-rueda
-piscina
+moto
+carretera
+manzana
+pera
+melón
+sandía
+melocotón
+mesa
+ciruela
