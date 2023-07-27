@@ -14,3 +14,5 @@ for n in numeros:
     if n % 2 == 0:
         pares3.append(n)
 print(pares3)
+
+"".sta
