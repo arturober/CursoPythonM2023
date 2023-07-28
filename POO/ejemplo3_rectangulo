@@ -1,0 +1,13 @@
+class Rectangulo:
+    def __init__(self, ancho, alto):
+        self.ancho = ancho
+        self.alto = alto
+        
+    def get_area(self):
+        return self.ancho * self.alto
+    
+    def __repr__(self) -> str:
+        return f"Rectángulo -> ancho = {self.ancho}, alto = {self.alto}"
+
+r = Rectangulo(4, 6)
+print(r)
