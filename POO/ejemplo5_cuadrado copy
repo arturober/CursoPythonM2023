@@ -17,8 +17,14 @@ class Cuadrado:
         if lado <= 0:
             raise ValueError("El cuadrado no puede tener lado negativo")
         self.__lado = lado
+       
+    @property # Puedo acceder sin los paréntesis 
+    def area(self):
+        return self.lado ** 2
         
 c = Cuadrado(4)
+print(f"lado: {c.lado}, área: {c.area}")
 c.lado = 25
-print(c.lado)
+print(f"lado: {c.lado}, área: {c.area}")
+
 
