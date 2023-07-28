@@ -25,6 +25,7 @@ print(c)
 
 c2 = Cuadrado(14)
 c3 = c + c2
+
 print(c3) # Cuadrado (lado = 22)
 print(c > c2)
 
