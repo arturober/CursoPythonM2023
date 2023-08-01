@@ -40,3 +40,5 @@ print(e.num_jugadores)
 e.add_jugadores(Jugador("Pepito", 38, 30000))
 
 print(e.num_jugadores)
+
+print(e)
