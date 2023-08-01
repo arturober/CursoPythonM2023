@@ -1,42 +1,23 @@
 from examen_class import Examen
+from dataclasses import dataclass, field
 
+@dataclass
 class Alumno:
-    def __init__(self, nombre: str, curso: str) -> None:
-        self.__nombre = nombre
-        self.curso = curso
-        self.__examenes: list[Examen] = []
-        
-    @property
-    def nombre(self):
-        return self.__nombre
-        
-    @property
-    def curso(self):
-        return self.__curso
-    
-    @curso.setter
-    def curso(self, curso: str):
-        if type(curso) != str or curso.strip() == "":
-            raise ValueError("El curso no puede estar vacío")
-        self.__curso = curso
+    nombre: str
+    curso: str
+    examenes: list[Examen] = field(default_factory=list)
         
     def add_examenes(self, *examen):
-        self.__examenes.extend(examen)
-        
-    def __repr__(self) -> str:
-        cad = f"{self.nombre} - {self.curso}:"
-        for e in self.__examenes:
-            cad += "\n  - " + str(e)
-        return cad
+        self.examenes.extend(examen)
     
     @property
     def media(self):
-        notas = [e.nota for e in self.__examenes]
+        notas = [e.nota for e in self.examenes]
         return sum(notas)/len(notas)
     
     def print_media_asignaturas(self):
-        asignaturas = {e.asignatura for e in self.__examenes}
+        asignaturas = {e.asignatura for e in self.examenes}
         for a in asignaturas:
-            notas = [e.nota for e in self.__examenes if e.asignatura == a]
+            notas = [e.nota for e in self.examenes if e.asignatura == a]
             print(f"Media {a}: {sum(notas)/len(notas): .2f} {notas}")
             
