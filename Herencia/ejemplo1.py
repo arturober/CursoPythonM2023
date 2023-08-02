@@ -9,6 +9,10 @@ class Empleado:  # No usaremos propiedades (@property) para simplificar
         
     def __repr__(self) -> str:
         return f"{self.nombre}. Sueldo: {self.sueldo: .2f}"
+    
+    @property
+    def sueldo_mensual(self):
+        return self.sueldo / 12
 
 
 # Clase derivada
@@ -26,6 +30,11 @@ class Programador(Empleado):
 
     def __repr__(self) -> str:
         return super().__repr__() + ". Lenguaje: " + self.lenguaje
+    
+    @property
+    def sueldo_mensual(self): # Los programadores Python cobran 100€ más al mes
+        sueldo = super().sueldo_mensual
+        return sueldo + 100 if self.lenguaje == "Python" else sueldo
 
 p = Programador("Paco", 20000, "Python")
 p.sube_sueldo(5)
