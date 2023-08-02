@@ -33,7 +33,6 @@ def add_tarea(db: sqlite3.Connection):
     cursor.execute("INSERT INTO tarea(descripcion, realizada) VALUES(?, 0)", (desc,))
     db.commit()
 
-
 def realiza_tarea(db: sqlite3.Connection):
     mostrar_tareas(db)
     id = int(input("Id de tarea realizada: "))
