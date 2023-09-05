@@ -1,11 +1,11 @@
 class Http {
   async ajax(method, url, body = null) {
-    const json = body && !body instanceof FormData;
-    const headers = body ? { "Content-Type": "application/json" } : {};
+    const json = body && !(body instanceof FormData);
+    const headers = body && json ? { "Content-Type": "application/json" } : {};
     const resp = await fetch(url, {
       method,
       headers,
-      body: JSON.stringify(body),
+      body: json ? JSON.stringify(body) : body,
     });
 
     if (!resp.ok) throw new Error(resp.statusText);
