@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from dataclasses import dataclass
 from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import String, Numeric
+from sqlalchemy import String, Numeric, Boolean
 
 app = Flask(__name__)
 db = SQLAlchemy()
@@ -16,7 +16,7 @@ class Producto(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     nombre: Mapped[str] = mapped_column(String(255))
     precio: Mapped[float] = mapped_column(Numeric(10,2))
-    
+      
 with app.app_context():
     db.create_all()
     
