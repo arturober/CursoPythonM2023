@@ -3,8 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 from dataclasses import dataclass
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import String, Numeric, Boolean
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 db = SQLAlchemy()
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tareas.db"
