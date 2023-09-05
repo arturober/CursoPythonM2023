@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from dataclasses import dataclass
 from sqlalchemy.orm import Mapped, mapped_column
@@ -24,7 +24,12 @@ with app.app_context():
 def get_productos():
     select = db.select(Producto)
     productos = db.session().execute(select).scalars().all()
-    return productos
+    return jsonify(productos)
+
+@app.get('/productos/<int:id>')
+def get_producto(id: int):
+    producto = db.get_or_404(Producto, id)
+    return jsonify(producto)
 
 @app.post('/productos')
 def insert_producto():
@@ -32,6 +37,21 @@ def insert_producto():
     producto = Producto(nombre=json["nombre"], precio=json["precio"])
     db.session().add(producto)
     db.session().commit()
-    return producto, 201 # 201 -> Created
+    return jsonify(producto), 201 # 201 -> Created
+
+@app.put('/productos/<int:id>')
+def update_producto(id: int):
+    producto = db.get_or_404(Producto, id)
+    json = request.json
+    producto.nombre = json["nombre"]
+    producto.precio = json["precio"]
+    db.session().commit()
+    return jsonify(producto)
+
+@app.delete('/productos/<int:id>')
+def delete_producto(id: int):
+    producto = db.get_or_404(Producto, id)
+    db.session().delete(producto)
+    return "", 204
 
 app.run()
