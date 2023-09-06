@@ -54,6 +54,8 @@ def update_tarea(id: int):
 def delete_tarea(id: int):
     tarea = db.get_or_404(Tarea, id)
     db.session().delete(tarea)
+    db.session().commit()
     return "", 204
 
 app.run()
+
