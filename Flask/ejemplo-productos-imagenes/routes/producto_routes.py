@@ -1,4 +1,7 @@
 from flask import Blueprint, jsonify, request
+from PIL import Image
+import io, base64
+
 from db import db
 from models import Producto
 from schemas import validate_json, ProductoSchema
@@ -22,7 +25,12 @@ def get_producto(id: int):
 @validate_json(ProductoSchema)
 def insert_producto():
     json = request.json
-    producto = Producto(nombre=json["nombre"], precio=json["precio"])
+    imagen_str = json["imagen"].split(",")[1] if json["imagen"].startswith("data") else json["imagen"]
+    img = Image.open(io.BytesIO(base64.decodebytes(bytes(imagen_str, "utf-8"))))
+    ruta = f"imagenes/{json['nombre']}.jpg"
+    img.convert('RGB').save(ruta)
+
+    producto = Producto(nombre=json["nombre"], precio=json["precio"], imagen=request.host_url+ruta)
     db.session().add(producto)
     db.session().commit()
     return jsonify(producto), 201  # 201 -> Created
