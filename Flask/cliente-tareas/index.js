@@ -47,5 +47,7 @@ form.addEventListener("submit", (e) => {
   http.post("http://localhost:5000/tareas", tarea).then((tarea) => {
     addTareaLista(tarea);
     form.descripcion.value = "";
+  }).catch(error => {
+    alert("Error al añadir tarea");
   });
 });
