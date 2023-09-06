@@ -1,23 +1,17 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
-from dataclasses import dataclass
-from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import String, Numeric, Boolean
+
 from flask_cors import CORS
+from db import db
 
 app = Flask(__name__)
 CORS(app)
-db = SQLAlchemy()
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tareas.db"
 
 db.init_app(app)
 
-@dataclass
-class Tarea(db.Model):
-    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    descripcion: Mapped[str] = mapped_column(String(255))  
-    realizada: Mapped[bool] = mapped_column(Boolean())
+
     
 with app.app_context():
     db.create_all()
