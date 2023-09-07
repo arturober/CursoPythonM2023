@@ -10,6 +10,8 @@ app = Flask(__name__)
 app.register_blueprint(rutas_productos, url_prefix='/productos')
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
+# app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:@localhost/productos"
+
 
 db.init_app(app)
 
