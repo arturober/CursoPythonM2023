@@ -1,6 +1,5 @@
 from marshmallow import Schema, fields, validate
 
-
 class TareaSchema(Schema):
     id = fields.Integer() # id es opcional
     descripcion = fields.Str(
@@ -20,3 +19,7 @@ class TareaSchema(Schema):
             "type": "El campo no es un booleano",
         },
     )
+    id_usuario = fields.Integer()
+    
+class TareaConUsuarioSchema(TareaSchema):
+    usuario = fields.Nested("UsuarioSchema")

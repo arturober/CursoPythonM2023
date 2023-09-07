@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from db import db
 from models import Usuario
+from flask_jwt_extended import create_access_token
 
 auth = Blueprint("auth", __name__)
 
@@ -16,7 +17,8 @@ def login():
     usuario = db.session().execute(select).scalars().one_or_none()
     if not usuario:
         return {"error": "Usuario y/o contraseña no válidos"}, 401
-    return "token"
+    token = create_access_token(identity=usuario.id)
+    return jsonify({"accessToken": token})
 
 @auth.post("/registro")
 def registro():

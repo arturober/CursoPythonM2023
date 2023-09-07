@@ -10,4 +10,4 @@ class Tarea(db.Model):
     descripcion: Mapped[str] = mapped_column(String(255))  
     realizada: Mapped[bool] = mapped_column(Boolean())
     id_usuario: Mapped[int] = mapped_column(ForeignKey("usuario.id")) # tabla.columna
-    tarea: Mapped["Usuario"] = relationship(back_populates="usuarios")
+    usuario: Mapped["Usuario"] = relationship(back_populates="tareas")

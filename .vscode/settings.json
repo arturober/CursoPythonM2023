@@ -6,6 +6,7 @@
     "python.analysis.extraPaths": [
         "./Flask/ejemplo-categoria-productos",
         "./Flask/ejemplo-categoria-productos",
+        "./Flask/ejemplo-tareas-login",
         "./Flask/ejemplo-tareas-login"
     ]
 }

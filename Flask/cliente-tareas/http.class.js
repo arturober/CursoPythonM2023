@@ -2,6 +2,9 @@ class Http {
   async ajax(method, url, body = null) {
     const json = body && !(body instanceof FormData);
     const headers = body && json ? { "Content-Type": "application/json" } : {};
+    const token = localStorage.getItem('token'); // Aquí está guardado el token del login
+    if(token) headers.Authorization = 'Bearer ' + token;
+    
     const resp = await fetch(url, {
       method,
       headers,

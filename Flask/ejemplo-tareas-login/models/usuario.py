@@ -10,4 +10,4 @@ class Usuario(db.Model):
     nombre: Mapped[str] = mapped_column(String(255))  
     email: Mapped[str] = mapped_column(String(255), unique=True)  
     password: Mapped[str] = mapped_column(String(255))  
-    usuarios: Mapped[List["Tarea"]] = relationship(back_populates="tarea")
+    tareas: Mapped[List["Tarea"]] = relationship(back_populates="usuario")
