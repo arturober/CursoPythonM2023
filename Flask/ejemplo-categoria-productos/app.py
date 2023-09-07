@@ -16,7 +16,7 @@ def serve_image(filename):
 # Hay que registrar las rutas antes de inicializar db!!!
 app.register_blueprint(rutas_productos, url_prefix='/productos')
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///productos.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///categoria-productos.db"
 # app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:@localhost/productos"
 
 

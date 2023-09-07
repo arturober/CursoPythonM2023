@@ -18,4 +18,5 @@ class ProductoSchema(Schema):
         },
         validate=validate.Range(min=0, error="El precio no puede ser negativo"),
     )
-    imagen = fields.Str(required=True)
+    imagen = fields.Str(required=True),
+    categoria_id = fields.Int(required=True)
