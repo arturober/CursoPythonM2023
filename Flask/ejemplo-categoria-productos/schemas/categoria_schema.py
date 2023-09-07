@@ -2,6 +2,7 @@ from marshmallow import Schema, fields, validate
 
 
 class CategoriaSchema(Schema):
+    id = fields.Int()
     nombre = fields.Str(
         required=True,
         error_messages={
@@ -10,3 +11,6 @@ class CategoriaSchema(Schema):
         },
         validate=validate.Length(min=4, error="El nombre debe tener al menos 4 letras"),
     )
+    
+class CategoriaConProductosSchema(CategoriaSchema):
+    productos = fields.Nested("ProductoSchema", many=True) # Lista de productos

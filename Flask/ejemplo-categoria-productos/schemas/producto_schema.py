@@ -2,6 +2,7 @@ from marshmallow import Schema, fields, validate
 
 
 class ProductoSchema(Schema):
+    id = fields.Int() # Opcional (para el POST)
     nombre = fields.Str(
         required=True,
         error_messages={
@@ -18,5 +19,8 @@ class ProductoSchema(Schema):
         },
         validate=validate.Range(min=0, error="El precio no puede ser negativo"),
     )
-    imagen = fields.Str(required=True),
+    imagen = fields.Str(required=True)
     categoria_id = fields.Int(required=True)
+
+class ProductoConCategoriaSchema(ProductoSchema):
+    categoria = fields.Nested("CategoriaSchema")

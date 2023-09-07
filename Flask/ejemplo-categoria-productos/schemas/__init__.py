@@ -1,3 +1,3 @@
-from schemas.producto_schema import ProductoSchema
-from schemas.categoria_schema import CategoriaSchema
+from schemas.producto_schema import ProductoSchema, ProductoConCategoriaSchema
+from schemas.categoria_schema import CategoriaSchema, CategoriaConProductosSchema
 from schemas.validate_json import validate_json
