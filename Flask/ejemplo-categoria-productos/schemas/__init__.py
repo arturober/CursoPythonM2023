@@ -1,2 +1,3 @@
 from schemas.producto_schema import ProductoSchema
+from schemas.categoria_schema import CategoriaSchema
 from schemas.validate_json import validate_json

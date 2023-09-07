@@ -1,7 +1,7 @@
 import os
 from flask import Flask, send_file
 from db import db
-from routes import rutas_productos
+from routes import rutas_productos, rutas_categorias
 
 app = Flask(__name__)
 
@@ -14,6 +14,7 @@ def serve_image(filename):
 # Todas las rutas que empiecen por /productos se gestionan aquí
 # Si pongo el url_prefix, tengo que quitarlo en las rutas
 # Hay que registrar las rutas antes de inicializar db!!!
+app.register_blueprint(rutas_categorias, url_prefix='/categorias')
 app.register_blueprint(rutas_productos, url_prefix='/productos')
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///categoria-productos.db"

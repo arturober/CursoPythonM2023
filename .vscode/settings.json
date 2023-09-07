@@ -4,6 +4,7 @@
     },
     "python.formatting.provider": "none",
     "python.analysis.extraPaths": [
+        "./Flask/ejemplo-categoria-productos",
         "./Flask/ejemplo-categoria-productos"
     ]
 }
